@@ -2,7 +2,7 @@
     <div class="games_wrapper">
         <div class="invite">
             <div class="text-center position_btn">
-                <v-btn class="btn_rounded" rounded color="primary" dark>invite friends</v-btn>
+                <v-btn href="https://www.google.com/" target="_blank" class="btn_rounded" rounded color="primary" dark>invite friends</v-btn>
             </div>
             <div class="text-center text_games">GAMES</div>
             <v-container>
@@ -26,9 +26,9 @@
                 </v-row>
             </v-container>
         </div>
-        <div class="join">
+        <div class="join" v-if="elements">
             <div>Join your team's chat</div>
-            <v-btn class="btn_join" rounded color="primary" dark>Join</v-btn>
+            <v-btn class="btn_join" href="https://www.google.com/" rounded dark target="_blank">Join</v-btn>
         </div>
     </div>
 </template>
@@ -36,6 +36,15 @@
 import carousel from 'vue-owl-carousel'
 
 export default {
+    computed: {
+        elements(){
+            return this.$store.state.elements;
+        }
+    },
+    created() {
+
+    },
+
     components: {
         carousel 
     },
@@ -43,6 +52,16 @@ export default {
 </script>
 
 <style scoped>
+    .btn_join{
+        font-weight: 400;
+        background: linear-gradient(-90deg, #6AB2E0 0%, #85EAD5 100%) !important;
+        box-shadow: 0 12px 36px 0 rgba(116,198,220,0.32) !important;
+        padding: 11px 73px !important;
+        /* border-radius: 50px;
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase */
+    }
     .text_games{
         padding-top: 40px;
         color: #FFF;
@@ -90,12 +109,7 @@ export default {
         align-items: center;
         flex-direction: column
     }
-    .btn_join{
-        font-weight: 400;
-        background: linear-gradient(48.67deg, #6AB2E0 0%, #85EAD5 100%);
-        box-shadow: 0 12px 36px 0 rgba(116,198,220,0.32);
-        padding: 11px 73px !important;
-    }
+
     .join>div{
         color: #222737;
         font-family: Lato;
@@ -107,5 +121,7 @@ export default {
         text-align: center;
         margin: 38px 26px 12px 26px;
     }
-    
+    .hidden{
+        display: none;
+    }
 </style>
